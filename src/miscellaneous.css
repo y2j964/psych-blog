@@ -1,0 +1,17 @@
+#root {
+  @apply flex flex-col min-h-screen;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  @apply w-full max-w-5xl mx-auto px-4;
+  flex: 1 1 auto;
+  /* ensure that footer doesn't creep up the page if there isn't much content within main */
+}

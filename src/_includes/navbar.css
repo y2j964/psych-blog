@@ -1,0 +1,39 @@
+.navbar {
+  @apply flex flex-wrap bg-black px-4 py-6 overflow-hidden;
+
+  &__item {
+    @apply text-white mt-3;
+
+    &:not(:last-child) {
+      @apply mr-5;
+    }
+
+    @screen sm {
+      @apply mt-0;
+    }
+  }
+
+  &__collapsible-group {
+    @apply block overflow-hidden w-full h-0 invisible;
+    transition: height 200ms ease-in-out, visibility 200ms ease-in-out;
+
+    @screen sm {
+      @apply flex w-auto h-full visible;
+    }
+
+    &--is-open {
+      @apply visible;
+      /* we know height will be 180px when there are 5 items here; if you change the items,
+      or their spacing you should update hard-coded height */
+      height: 180px;
+    }
+  }
+}
+
+.hamburger-toggle {
+  @apply ml-auto text-white;
+
+  @screen sm {
+    @apply hidden;
+  }
+}

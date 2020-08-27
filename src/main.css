@@ -1,0 +1,12 @@
+/* purgecss start ignore */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "miscellaneous.css";
+@import "/_includes/navbar.css";
+/* purgecss end ignore */
+@import "tailwindcss/utilities";
+
+@custom-media --sm (min-width: 640px);
+@custom-media --md (min-width: 768px);
+@custom-media --lg (min-width: 1024px);
+@custom-media --xl (min-width: 1280px);

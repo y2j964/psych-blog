@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {{> _head}}
+</head>
+
+<body>
+  <div id='root'>
+    {{> _header}}
+    {{> _navbar}}
+    <main>
+      {{{content}}}        
+    </main>
+    {{> _footer}}
+  </div>  
+ <script src={{getObjectProperty assets "main.js"}}></script>
+</body>
+
+</html>
