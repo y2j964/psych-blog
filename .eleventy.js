@@ -23,6 +23,8 @@ module.exports = function (eleventyConfig) {
 
     return content;
   });
+  
+  eleventyConfig.addPassthroughCopy({"src/admin": "/admin"});
 
   return {
     dir: {
