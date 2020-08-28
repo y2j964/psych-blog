@@ -74,6 +74,9 @@ Runs webpack in production mode and builds assets.
 #### `npm run build:eleventy`
 Builds static resources.
 
+#### `npm run build:deploy`
+Deploys build directory to gh-pages
+
 #### `npm run build`
 Runs all production scripts in parallel. This is your main production script.
 

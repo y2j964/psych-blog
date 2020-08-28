@@ -9,7 +9,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (
-      process.env.ELEVENTY_PRODUCTION &&
+      process.env.NODE_ENV === "production" &&
       outputPath &&
       outputPath.endsWith(".html")
     ) {

@@ -1,14 +1,14 @@
 <nav class='navbar'>
-  <div class='navbar__item mt-0'><a href='/'>Home</a></div>
+  <div class='navbar__item mt-0'><a href={{ url '/' }}>Home</a></div>
   <button class='hamburger-toggle' aria-label="toggle collapsible navigation menu"
     aria-controls="navbarCollapsibleGroup" aria-expanded="false">
     {{> _hamburger-icon}}
   </button>
   <ul class='navbar__collapsible-group' id='navbarCollapsibleGroup'>
-    <li class='navbar__item'><a href='/psychic-voyages'>Psychic Voyages</a></li>
-    <li class='navbar__item'><a href='/media'>Media</a></li>
-    <li class='navbar__item'><a href='/support'>Support</a></li>
-    <li class='navbar__item'><a href='/about-me'>About Me</a></li>
-    <li class='navbar__item'><a href='/contact'>Contact</a></li>
+    <li class='navbar__item'><a href={{ url '/psychic-voyages' }}>Psychic Voyages</a></li>
+    <li class='navbar__item'><a href={{ url '/media' }}>Media</a></li>
+    <li class='navbar__item'><a href={{ url '/support' }}>Support</a></li>
+    <li class='navbar__item'><a href={{ url '/about-me' }}>About Me</a></li>
+    <li class='navbar__item'><a href={{ url '/contact' }}>Contact</a></li>
   </ul>
 </nav>
