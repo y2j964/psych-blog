@@ -23,16 +23,15 @@ module.exports = function (eleventyConfig) {
 
     return content;
   });
-  
-  eleventyConfig.addPassthroughCopy({"src/admin": "/admin"});
+
+  eleventyConfig.addPassthroughCopy({ "src/admin": "/admin" });
 
   return {
     dir: {
-      input: "src/pages",
+      input: "src/templates",
       includes: "../_includes",
       data: "../_data",
       output: "build",
     },
-    dataTemplateEngine: "hbs",
   };
 };
