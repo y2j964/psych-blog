@@ -1,0 +1,18 @@
+---
+layout: _base-layout.hbs
+---
+
+<article class='post'>
+  <h2 class="post__title">{{ title }}</h2>
+  <p class='post__teaser'>{{ summary }}</p>
+  <div class="post__meta">
+    <span>{{ author }} | </span>
+    <time datetime="{{toISOString date}}">{{ toDateString date }}
+  </div>
+  <div class='post__img-container'>
+    <img src={{ thumbnail }}>
+  </div>
+  <div class='post__body'>
+    {{{ content }}}
+  </div>
+</article>

@@ -15,3 +15,53 @@ main {
   flex: 1 1 auto;
   /* ensure that footer doesn't creep up the page if there isn't much content within main */
 }
+
+.ratio-16-9 {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-top: 56.25%;
+  background-color: transparent;
+
+  &--split {
+    padding-top: 28.125%;
+  }
+
+  img {
+    position: absolute;
+    border: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+  }
+
+  &--overflowed {
+    overflow: visible;
+  }
+
+  &--left-aligned {
+    img {
+      margin: auto 0;
+    }
+  }
+}
+
+.a-pseudo-wrap {
+  /* wrap entire container in a screen-reader friendly way */
+  &::after {
+    @apply absolute top-0 bottom-0 right-0 left-0;
+    content: "";
+  }
+  &--mb {
+    &::after {
+      @apply absolute top-0 bottom-0 right-0 left-0;
+      content: "";
+      margin-bottom: 40px;
+    }
+  }
+}

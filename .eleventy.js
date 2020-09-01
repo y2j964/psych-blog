@@ -2,11 +2,6 @@ const htmlmin = require("html-minifier");
 const fs = require("fs");
 const path = require("path");
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addFilter("getObjectProperty", function (obj, prop) {
-    return obj[prop];
-  });
-
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (
       process.env.NODE_ENV === "production" &&
@@ -25,6 +20,18 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({ "src/admin": "/admin" });
+
+  eleventyConfig.addFilter("getObjectProperty", function (obj, prop) {
+    return obj[prop];
+  });
+
+  eleventyConfig.addFilter("toDateString", function (date) {
+    return date.toDateString();
+  });
+
+  eleventyConfig.addFilter("toISOString", function (date) {
+    return date.toISOString();
+  });
 
   return {
     dir: {

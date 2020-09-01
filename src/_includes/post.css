@@ -1,0 +1,31 @@
+.post {
+  @apply pb-8;
+
+  &__title {
+    @apply text-4xl text-center capitalize font-bold mt-8 mb-3;
+  }
+
+  &__teaser {
+    @apply mb-2 text-center text-base;
+  }
+
+  &__meta {
+    @apply block mb-4 text-center text-sm;
+  }
+
+  &__img-container {
+    @apply -mx-4 flex justify-center;
+
+    @screen sm {
+      @apply mx-0;
+    }
+  }
+
+  &__body {
+    @apply my-4;
+
+    > p {
+      @apply mb-4;
+    }
+  }
+}

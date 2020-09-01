@@ -2,7 +2,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "miscellaneous.css";
+@import "_includes/card.css";
 @import "_includes/navbar.css";
+@import "_includes/post.css";
 /* purgecss end ignore */
 @import "tailwindcss/utilities";
 
