@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-  {{> _head}}
+  {{> head}}
 </head>
 
 <body>
   <div id='root'>
-    {{> _header}}
-    {{> _navbar}}
+    {{> header}}
+    {{> navbar}}
     <main class='max-w-3xl'>
       {{{content}}}
     </main>
-    {{> _footer}}
+    {{> footer}}
   </div>
   <script src={{myProject.rootPath}}{{getObjectProperty assets "main.js"}}></script>
 </body>
