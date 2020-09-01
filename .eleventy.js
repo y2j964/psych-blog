@@ -2,6 +2,7 @@ const htmlmin = require("html-minifier");
 const fs = require("fs");
 const path = require("path");
 
+module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (
       process.env.NODE_ENV === "production" &&
