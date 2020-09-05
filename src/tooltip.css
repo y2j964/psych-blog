@@ -1,0 +1,28 @@
+.tooltip-container {
+  @apply absolute max-w-sm text-sm rounded;
+  /* line-height: 1.5em; */
+  /* border: 1px solid #c8ccd1;   */
+  background-color: #fbfbfb;
+  box-shadow: 0 -4px 25px -5px rgba(0, 0, 0, 0.25);
+  overflow-wrap: break-word;
+
+  &--is-active {
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(100% - 4px);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 12px solid #fbfbfb;
+      margin-left: 12px;
+    }
+  }
+}
+
+.tooltip {
+  @apply px-3 pt-4 pb-6;
+  margin-bottom: -0.5rem;
+}

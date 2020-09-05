@@ -1,7 +1,10 @@
 /* purgecss start ignore */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "animations.css";
 @import "btn.css";
+@import "footnotes.css";
+@import "tooltip.css";
 @import "miscellaneous.css";
 @import "_includes/card.css";
 @import "_includes/navbar.css";
