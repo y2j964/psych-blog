@@ -1,20 +1,14 @@
-const initHamburgerToggle = () => {
-  const hamburgerToggle = document.querySelector(".hamburger-toggle");
-  const navbarCollapsibleGroup = document.querySelector(
-    ".navbar__collapsible-group"
+const hamburgerToggle = document.querySelector(".hamburger-toggle");
+const navbarCollapsibleGroup = document.querySelector(
+  ".navbar__collapsible-group"
+);
+
+const toggleHamburgerMenu = () => {
+  navbarCollapsibleGroup.classList.toggle("navbar__collapsible-group--is-open");
+  hamburgerToggle.setAttribute(
+    "aria-expanded",
+    `${hamburgerToggle.ariaExpanded === "true" ? "false" : "true"}`
   );
-
-  const toggleHamburgerMenu = () => {
-    navbarCollapsibleGroup.classList.toggle(
-      "navbar__collapsible-group--is-open"
-    );
-    hamburgerToggle.setAttribute(
-      "aria-expanded",
-      `${hamburgerToggle.ariaExpanded === "true" ? "false" : "true"}`
-    );
-  };
-
-  hamburgerToggle.addEventListener("click", toggleHamburgerMenu);
 };
 
-export default initHamburgerToggle;
+export { hamburgerToggle, toggleHamburgerMenu };

@@ -84,7 +84,9 @@ const tooltipAnimationEndHandler = () => {
   }
 };
 
-if (post) {
-  post.addEventListener("mouseover", debouncedFootnoteHoverHandler);
-  tooltipContainer.addEventListener("animationend", tooltipAnimationEndHandler);
-}
+export {
+  post,
+  tooltipContainer,
+  debouncedFootnoteHoverHandler,
+  tooltipAnimationEndHandler,
+};
