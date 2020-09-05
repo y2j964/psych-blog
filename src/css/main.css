@@ -6,9 +6,9 @@
 @import "footnotes.css";
 @import "tooltip.css";
 @import "miscellaneous.css";
-@import "_includes/card.css";
-@import "_includes/navbar.css";
-@import "_includes/post.css";
+@import "../_includes/card.css";
+@import "../_includes/navbar.css";
+@import "../_includes/post.css";
 /* purgecss end ignore */
 @import "tailwindcss/utilities";
 

@@ -7,7 +7,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     path.resolve(__dirname, "src", "**/*.json"),
     path.resolve(__dirname, "src", "**/*.hbs"),
   ],
-  css: ["./src/main.css"],
+  css: ["./src/css/main.css"],
   // ignore any --is- modifier class
   whitelistPatterns: [/--is-/],
 
