@@ -10,7 +10,6 @@ const setIsTooltipVisible = (newState) => {
 
 const tooltipContainerStylesShape = {
   top: "",
-  left: "",
   additionalClasses: [],
   enterAnimation: "",
   exitAnimation: "",
@@ -21,7 +20,7 @@ const setTooltipContainerStyles = (newState) => {
 };
 
 const resetTooltipContainerStylesInDOM = () => {
-  tooltipContainer.style.left = tooltipContainerStylesShape.left;
+  tooltipContainer.style.left = "";
   tooltipContainer.style.top = tooltipContainerStylesShape.top;
   // note that here we specifically remove the classes previously added
   tooltipContainer.classList.remove(
@@ -31,7 +30,6 @@ const resetTooltipContainerStylesInDOM = () => {
 };
 
 const updateTooltipContainerStylesInDOM = () => {
-  tooltipContainer.style.left = tooltipContainerStyles.left;
   tooltipContainer.style.top = tooltipContainerStyles.top;
   tooltipContainer.classList.add(...tooltipContainerStyles.additionalClasses);
   tooltipContainer.style.animation = tooltipContainerStyles.enterAnimation;
@@ -42,7 +40,6 @@ const getTopAlignedTooltipContainerStyles = (tooltipTriggerRect, tooltip) => ({
   top: `${
     tooltipTriggerRect.top + window.scrollY - tooltip.offsetHeight + 5
   }px`,
-  left: `${tooltipTriggerRect.right + window.scrollX - 22.47}px`,
   additionalClasses: [
     "tooltip-container--is-active",
     "tooltip-container--is-top",
@@ -54,7 +51,6 @@ const getTopAlignedTooltipContainerStyles = (tooltipTriggerRect, tooltip) => ({
 const getBottomAlignedTooltipContainerStyles = (tooltipTriggerRect) => ({
   // 6 and 22.47 represent additional spacing for aesthetics
   top: `${tooltipTriggerRect.bottom + window.scrollY + 6}px`,
-  left: `${tooltipTriggerRect.right + window.scrollX - 22.47}px`,
   additionalClasses: [
     "tooltip-container--is-active",
     "tooltip-container--is-bottom",
@@ -65,6 +61,9 @@ const getBottomAlignedTooltipContainerStyles = (tooltipTriggerRect) => ({
 
 const getIsTopAligned = (tooltipTriggerRect, tooltip) =>
   tooltipTriggerRect.top - tooltip.offsetHeight >= 0;
+
+const getTooltipLeftPosition = (tooltipTriggerRect) =>
+  `${tooltipTriggerRect.right + window.scrollX - 22.47}px`;
 
 const getFootnoteText = (e) => {
   const footnoteFullText = document.querySelector(e.target.hash).textContent;
@@ -88,7 +87,10 @@ const insertTooltipIntoDOM = (tooltip, tooltipTrigger) => {
   tooltipContainer.appendChild(tooltip);
 
   const tooltipTriggerRect = tooltipTrigger.getBoundingClientRect();
+  // left must be set before top is calculated
+  tooltipContainer.style.left = getTooltipLeftPosition(tooltipTriggerRect);
   const isTopAligned = getIsTopAligned(tooltipTriggerRect, tooltip);
+
   const newTooltipContainerStyles = isTopAligned
     ? getTopAlignedTooltipContainerStyles(tooltipTriggerRect, tooltip)
     : getBottomAlignedTooltipContainerStyles(tooltipTriggerRect);
