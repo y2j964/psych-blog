@@ -1,9 +1,70 @@
 import debounce from "lodash.debounce";
-import getElAbsolutePosition from "./getElAbsolutePosition";
 
 const post = document.querySelector(".post");
 const tooltipContainer = document.querySelector(".tooltip-container");
+
 let isTooltipVisible = false;
+const setIsTooltipVisible = (newState) => {
+  isTooltipVisible = newState;
+};
+
+const tooltipContainerStylesShape = {
+  top: "",
+  left: "",
+  additionalClasses: [],
+  enterAnimation: "",
+  exitAnimation: "",
+};
+let tooltipContainerStyles = tooltipContainerStylesShape;
+const setTooltipContainerStyles = (newState) => {
+  tooltipContainerStyles = newState;
+};
+
+const resetTooltipContainerStylesInDOM = () => {
+  tooltipContainer.style.left = tooltipContainerStylesShape.left;
+  tooltipContainer.style.top = tooltipContainerStylesShape.top;
+  // note that here we specifically remove the classes previously added
+  tooltipContainer.classList.remove(
+    ...tooltipContainerStyles.additionalClasses
+  );
+  tooltipContainer.style.animation = tooltipContainerStylesShape.enterAnimation;
+};
+
+const updateTooltipContainerStylesInDOM = () => {
+  tooltipContainer.style.left = tooltipContainerStyles.left;
+  tooltipContainer.style.top = tooltipContainerStyles.top;
+  tooltipContainer.classList.add(...tooltipContainerStyles.additionalClasses);
+  tooltipContainer.style.animation = tooltipContainerStyles.enterAnimation;
+};
+
+const getTopAlignedTooltipContainerStyles = (tooltipTriggerRect, tooltip) => ({
+  // 5 and 22.47 represent additional spacing for aesthetics
+  top: `${
+    tooltipTriggerRect.top + window.scrollY - tooltip.offsetHeight + 5
+  }px`,
+  left: `${tooltipTriggerRect.right + window.scrollX - 22.47}px`,
+  additionalClasses: [
+    "tooltip-container--is-active",
+    "tooltip-container--is-top",
+  ],
+  enterAnimation: "300ms ease 1 forwards slideInDown",
+  exitAnimation: "300ms ease-out 1 forwards slideOutUp",
+});
+
+const getBottomAlignedTooltipContainerStyles = (tooltipTriggerRect) => ({
+  // 6 and 22.47 represent additional spacing for aesthetics
+  top: `${tooltipTriggerRect.bottom + window.scrollY + 6}px`,
+  left: `${tooltipTriggerRect.right + window.scrollX - 22.47}px`,
+  additionalClasses: [
+    "tooltip-container--is-active",
+    "tooltip-container--is-bottom",
+  ],
+  enterAnimation: "300ms ease 1 forwards slideInUp",
+  exitAnimation: "300ms ease-out 1 forwards slideOutDown",
+});
+
+const getIsTopAligned = (tooltipTriggerRect, tooltip) =>
+  tooltipTriggerRect.top - tooltip.offsetHeight >= 0;
 
 const getFootnoteText = (e) => {
   const footnoteFullText = document.querySelector(e.target.hash).textContent;
@@ -26,26 +87,20 @@ const createToolTip = (e) => {
 const insertTooltipIntoDOM = (tooltip, tooltipTrigger) => {
   tooltipContainer.appendChild(tooltip);
 
-  // update tooltipContainer styles/position
-  const [footnoteRefLeft, footnoteRefTop] = getElAbsolutePosition(
-    tooltipTrigger
-  );
-  tooltipContainer.style.left = `${footnoteRefLeft - 14}px`;
-  tooltipContainer.style.top = `${
-    footnoteRefTop - tooltipContainer.offsetHeight - 6
-  }px`;
-  // sub by offsetheight to fix it atop of footnote
-  // sub 6 for additional padding
+  const tooltipTriggerRect = tooltipTrigger.getBoundingClientRect();
+  const isTopAligned = getIsTopAligned(tooltipTriggerRect, tooltip);
+  const newTooltipContainerStyles = isTopAligned
+    ? getTopAlignedTooltipContainerStyles(tooltipTriggerRect, tooltip)
+    : getBottomAlignedTooltipContainerStyles(tooltipTriggerRect);
 
-  tooltipContainer.classList.add("tooltip-container--is-active");
-  tooltipContainer.style.animation = "300ms ease 1 forwards slideInDown";
-
-  isTooltipVisible = true;
+  setTooltipContainerStyles(newTooltipContainerStyles);
+  updateTooltipContainerStylesInDOM();
+  setIsTooltipVisible(true);
 };
 
 const removeTooltipFromDOM = () => {
-  tooltipContainer.style.animation = "300ms ease-out 1 forwards slideOutUp";
-  isTooltipVisible = false;
+  tooltipContainer.style.animation = tooltipContainerStyles.exitAnimation;
+  setIsTooltipVisible(false);
 };
 
 const footnoteHoverHandler = (e) => {
@@ -60,7 +115,6 @@ const footnoteHoverHandler = (e) => {
   }
 
   // if tooltip is visible, we should be listening for destroy event
-
   // if hovering within tooltip or tooltip trigger, keep tooltip alive and return
   if (
     e.target.parentElement.classList.contains("footnote-ref") ||
@@ -77,10 +131,11 @@ const debouncedFootnoteHoverHandler = debounce(footnoteHoverHandler, 250);
 
 const tooltipAnimationEndHandler = () => {
   // if (at end of animation) tooltip is not visible
-
   if (!isTooltipVisible) {
-    tooltipContainer.classList.remove("tooltip-container--is-active");
+    resetTooltipContainerStylesInDOM();
     tooltipContainer.removeChild(tooltipContainer.firstChild);
+    // reset state
+    setTooltipContainerStyles(tooltipContainerStylesShape);
   }
 };
 

@@ -3,7 +3,7 @@
   /* line-height: 1.5em; */
   /* border: 1px solid #c8ccd1;   */
   background-color: #fbfbfb;
-  box-shadow: 0 -4px 25px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -1px 25px -5px rgba(0, 0, 0, 0.25);
   overflow-wrap: break-word;
 
   &--is-active {
@@ -11,13 +11,30 @@
       content: "";
       position: absolute;
       left: 0;
-      top: calc(100% - 4px);
       width: 0;
       height: 0;
       border-left: 12px solid transparent;
       border-right: 12px solid transparent;
-      border-top: 12px solid #fbfbfb;
       margin-left: 12px;
+    }
+  }
+
+  &--is-top {
+    &::before {
+      top: calc(100% - 4px);
+      border-top: 12px solid #fbfbfb;
+    }
+  }
+
+  &--is-bottom {
+    &::before {
+      bottom: calc(100% - 4px);
+      border-bottom: 12px solid #fbfbfb;
+    }
+
+    .tooltip {
+      @apply pt-6 pb-4 mb-0;
+      margin-top: -0.5rem;
     }
   }
 }
