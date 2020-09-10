@@ -95,7 +95,7 @@ const getFootnoteItemParagraphFrags = (e) => {
 
   for (let i = 0; i < footnoteItemParagraphs.length; i += 1) {
     const tooltipParagraph = document.createElement("p");
-    tooltipParagraph.classList.add("tooltip-text");
+    tooltipParagraph.classList.add("tooltip__text");
 
     if (i < footnoteItemParagraphs.length - 1) {
       tooltipParagraph.textContent = footnoteItemParagraphs[i].textContent;
@@ -175,7 +175,7 @@ const footnoteHoverHandler = (e) => {
     e.target.parentElement.classList.contains("footnote-ref") ||
     e.target.classList.contains("tooltip-container") ||
     e.target.classList.contains("tooltip") ||
-    e.target.classList.contains("tooltip-text")
+    e.target.classList.contains("tooltip__text")
   ) {
     return;
   }
