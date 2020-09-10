@@ -21,6 +21,7 @@ const setTooltipContainerStyles = (newState) => {
 
 const resetTooltipContainerStylesInDOM = () => {
   tooltipContainer.style.left = "";
+  tooltipContainer.style.right = "";
   tooltipContainer.style.top = tooltipContainerStylesShape.top;
   // note that here we specifically remove the classes previously added
   tooltipContainer.classList.remove(
@@ -35,7 +36,11 @@ const updateTooltipContainerStylesInDOM = () => {
   tooltipContainer.style.animation = tooltipContainerStyles.enterAnimation;
 };
 
-const getTopAlignedTooltipContainerStyles = (tooltipTriggerRect, tooltip) => ({
+const getTopAlignedTooltipContainerStyles = (
+  tooltipTriggerRect,
+  tooltip,
+  horizontalClass
+) => ({
   // 5 and 22.47 represent additional spacing for aesthetics
   top: `${
     tooltipTriggerRect.top + window.scrollY - tooltip.offsetHeight + 5
@@ -43,27 +48,46 @@ const getTopAlignedTooltipContainerStyles = (tooltipTriggerRect, tooltip) => ({
   additionalClasses: [
     "tooltip-container--is-active",
     "tooltip-container--is-top",
+    horizontalClass,
   ],
   enterAnimation: "300ms ease 1 forwards slideInDown",
   exitAnimation: "300ms ease-out 1 forwards slideOutUp",
 });
 
-const getBottomAlignedTooltipContainerStyles = (tooltipTriggerRect) => ({
+const getBottomAlignedTooltipContainerStyles = (
+  tooltipTriggerRect,
+  horizontalClass
+) => ({
   // 6 and 22.47 represent additional spacing for aesthetics
   top: `${tooltipTriggerRect.bottom + window.scrollY + 6}px`,
   additionalClasses: [
     "tooltip-container--is-active",
     "tooltip-container--is-bottom",
+    horizontalClass,
   ],
   enterAnimation: "300ms ease 1 forwards slideInUp",
   exitAnimation: "300ms ease-out 1 forwards slideOutDown",
 });
 
+// isTopAligned means the tooltip is positioned to the
+// top of the trigger
 const getIsTopAligned = (tooltipTriggerRect, tooltip) =>
   tooltipTriggerRect.top - tooltip.offsetHeight >= 0;
 
+// isRightAligned means that the tooltip is positioned to the
+// right of the trigger
+const getIsRightAligned = (tooltipTriggerRect, maxWidth = 360) =>
+  window.innerWidth - tooltipTriggerRect.right >= maxWidth;
+
 const getTooltipLeftPosition = (tooltipTriggerRect) =>
-  `${tooltipTriggerRect.right + window.scrollX - 22.47}px`;
+  // 23.47 is for additional spacing
+  `${tooltipTriggerRect.right + window.scrollX - 23.47}px`;
+
+const getTooltipRightPosition = (tooltipTriggerRect) =>
+  // 28 is for additional spacing
+  `${
+    window.innerWidth - tooltipTriggerRect.right - tooltipTriggerRect.width - 28
+  }px`;
 
 const getFootnoteText = (e) => {
   const footnoteFullText = document.querySelector(e.target.hash).textContent;
@@ -85,15 +109,30 @@ const createToolTip = (e) => {
 
 const insertTooltipIntoDOM = (tooltip, tooltipTrigger) => {
   tooltipContainer.appendChild(tooltip);
-
   const tooltipTriggerRect = tooltipTrigger.getBoundingClientRect();
-  // left must be set before top is calculated
-  tooltipContainer.style.left = getTooltipLeftPosition(tooltipTriggerRect);
-  const isTopAligned = getIsTopAligned(tooltipTriggerRect, tooltip);
 
+  // horizontal placement must be set before top is calculated
+  const isRightAligned = getIsRightAligned(tooltipTriggerRect);
+  let horizontalClass;
+  if (isRightAligned) {
+    tooltipContainer.style.left = getTooltipLeftPosition(tooltipTriggerRect);
+    horizontalClass = "tooltip-container--is-right";
+  } else {
+    tooltipContainer.style.right = getTooltipRightPosition(tooltipTriggerRect);
+    horizontalClass = "tooltip-container--is-left";
+  }
+
+  const isTopAligned = getIsTopAligned(tooltipTriggerRect, tooltip);
   const newTooltipContainerStyles = isTopAligned
-    ? getTopAlignedTooltipContainerStyles(tooltipTriggerRect, tooltip)
-    : getBottomAlignedTooltipContainerStyles(tooltipTriggerRect);
+    ? getTopAlignedTooltipContainerStyles(
+        tooltipTriggerRect,
+        tooltip,
+        horizontalClass
+      )
+    : getBottomAlignedTooltipContainerStyles(
+        tooltipTriggerRect,
+        horizontalClass
+      );
 
   setTooltipContainerStyles(newTooltipContainerStyles);
   updateTooltipContainerStylesInDOM();
