@@ -9,6 +9,10 @@
 
 .footnote-item {
   @apply mb-2 text-sm;
+
+  p {
+    @apply mb-4;
+  }
 }
 
 .footnote-ref {

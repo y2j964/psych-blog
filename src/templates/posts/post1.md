@@ -17,7 +17,7 @@ Quisque mi arcu, tincidunt sit amet tincidunt quis, aliquam eget sem. Donec iacu
 
 [^1]: That Jack Daniels is going to freezing!
 
-[^2]: Quisque mi arcu, tincidunt sit amet tincidunt quis, aliquam eget sem. Donec iaculis, nunc id lacinia luctus, tortor turpis aliquam odio, eu feugiat nibh enim vel diam.  hasellus iaculis sodales tortor, nec tempor lectus aliquet interdum. Proin volutpat velit nulla, id euismod lacus hendrerit id. Vestibulum lobortis aliquet felis, at auctor
+[^2]: Quisque mi arcu, tincidunt sit amet tincidunt quis, aliquam eget sem. Donec iaculis, nunc id lacinia luctus, tortor turpis aliquam odio, eu feugiat nibh enim vel diam.  hasellus iaculis sodales tortor, nec tempor lectus aliquet interdum. Proin volutpat velit nulla, id euismod lacus hendrerit id. Vestibulum lobortis aliquet felis, at auctor.
 
     Phasellus metus orci, molestie id semper vel, porttitor et diam. Etiam enim mauris, fringilla consequat iaculis id, placerat laoreet dolor. Curabitur condimentum vulputate dolor, vitae euismod ligula tincidunt vitae. Cras elementum felis eu sodales maximus. Suspendisse a turpis posuere, sagittis lorem ultricies, egestas risus.
 

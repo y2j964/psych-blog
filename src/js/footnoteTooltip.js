@@ -89,21 +89,35 @@ const getTooltipRightPosition = (tooltipTriggerRect) =>
     window.innerWidth - tooltipTriggerRect.right - tooltipTriggerRect.width - 28
   }px`;
 
-const getFootnoteText = (e) => {
-  const footnoteFullText = document.querySelector(e.target.hash).textContent;
-  // we don't want the nested arrow and additional spacing, hence subtract 4
-  return footnoteFullText.slice(0, footnoteFullText.length - 4);
+const getFootnoteItemParagraphFrags = (e) => {
+  const footnoteItemParagraphs = document.querySelector(e.target.hash).children;
+  const pFrags = document.createDocumentFragment();
+
+  for (let i = 0; i < footnoteItemParagraphs.length; i += 1) {
+    const tooltipParagraph = document.createElement("p");
+    tooltipParagraph.classList.add("tooltip-text");
+
+    if (i < footnoteItemParagraphs.length - 1) {
+      tooltipParagraph.textContent = footnoteItemParagraphs[i].textContent;
+      pFrags.appendChild(tooltipParagraph);
+    } else {
+      // on last paragraph, we need to slice out the return anchor and spacing
+      tooltipParagraph.textContent = footnoteItemParagraphs[
+        i
+      ].textContent.slice(0, footnoteItemParagraphs[i].textContent.length - 3);
+      pFrags.appendChild(tooltipParagraph);
+    }
+  }
+
+  return pFrags;
 };
 
 const createToolTip = (e) => {
   const tooltip = document.createElement("div");
   tooltip.classList.add("tooltip");
+  const tooltipParagraphFrags = getFootnoteItemParagraphFrags(e);
+  tooltip.appendChild(tooltipParagraphFrags);
 
-  const tooltipParagraph = document.createElement("p");
-  tooltipParagraph.textContent = getFootnoteText(e);
-  tooltipParagraph.classList.add("tooltip-text");
-
-  tooltip.appendChild(tooltipParagraph);
   return tooltip;
 };
 

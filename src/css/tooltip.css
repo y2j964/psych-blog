@@ -54,4 +54,10 @@
 .tooltip {
   @apply px-3 pt-4 pb-6;
   margin-bottom: -0.5rem;
+
+  &-text {
+    &:not(:last-child) {
+      @apply mb-3;
+    }
+  }
 }
