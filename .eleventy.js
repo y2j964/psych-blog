@@ -56,6 +56,10 @@ module.exports = function (eleventyConfig) {
     return date.toISOString();
   });
 
+  eleventyConfig.addFilter("reverse", function (arr) {
+    return arr.slice().reverse();
+  });
+
   return {
     dir: {
       input: "src/templates",
