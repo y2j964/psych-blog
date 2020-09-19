@@ -5,7 +5,7 @@ author: Brandon Mooney
 thumbnail: https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80
 summary: This is a test, fool.
 tags:
-  - post
+  - posts
 ---
 Duis quis tellus vel dui fermentum egestas. Aenean molestie arcu sit amet quam mattis mollis. Nunc mollis quam eget metus facilisis pellentesque. Praesent a rhoncus odio, el blandit ex. Sed ornare porta est in malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris vitae orci id dui ultrices malesuada. Donec velit tellus, sagittis sed eleifend a, luctus ut purus. Aliquam ullamcorper massa neque, vel venenatis erat efficitur a. Etiam at sollicitudin massa, a dapibus sem.
 
