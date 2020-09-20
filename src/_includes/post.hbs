@@ -10,7 +10,7 @@ layout: base-layout.hbs
     <time datetime="{{toISOString date}}">{{ toDateString date }}
   </div>
   <div class='post__img-container'>
-    <img src={{ thumbnail }}>
+    <img src={{ thumbnail }} alt="{{ thumbnailDescription }}">
   </div>
   <div class='post__body'>
     {{{ content }}}

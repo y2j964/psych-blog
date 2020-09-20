@@ -4,6 +4,7 @@ description: Different, innit?
 author: The Dude
 date: 2020-08-31 18:22:00
 thumbnail: https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80
+thumbnailDescription: Lean tree surrounded by verdant underbrush
 tags: posts
 ---
 
