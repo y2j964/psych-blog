@@ -4,5 +4,9 @@ title: Home
 description: Psychology focused writing by Brandon Mooney
 ---
 
-<h2 class='text-4xl text-center capitalize font-bold my-5'>Please take me home</h2>
-<p></p>
+<h2 class='text-4xl text-center capitalize font-bold my-8'>Please take me home</h2>
+<ul class="flex flex-col items-center mx-auto max-w-sm sm:max-w-2xl xl:max-w-3xl mb-10">
+  {{#each (reverse collections.posts)  as | post | }}
+  {{> card post}}
+  {{/each}}
+</ul>
