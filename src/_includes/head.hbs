@@ -7,7 +7,9 @@
 	Psych Blog
 	{{/if}}
 </title>
-<meta name="description" content="">
+{{#if description}}
+<meta name="description" content="{{ description }}">
+{{/if}}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href={{myProject.rootPath}}{{getObjectProperty assets "main.css"}}>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
