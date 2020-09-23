@@ -4,10 +4,13 @@ const ImageminWebP = require("imagemin-webp");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: [
-    path.resolve(__dirname, "src", "js", "main.js"),
-    path.resolve(__dirname, "src", "css", "main.css"),
-  ],
+  entry: {
+    main: [
+      path.resolve(__dirname, "src", "js", "main.js"),
+      path.resolve(__dirname, "src", "css", "main.css"),
+    ],
+    adminPreview: path.resolve(__dirname, "src", "js", "adminPreview.js"),
+  },
   output: {
     path: path.resolve(__dirname, "build"),
   },
