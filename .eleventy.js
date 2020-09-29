@@ -44,6 +44,13 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ "src/admin": "/admin" });
 
+  eleventyConfig.addHandlebarsHelper("ifEq", function (v1, v2, options) {
+    if (v1 === v2) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
   eleventyConfig.addFilter("getObjectProperty", function (obj, prop) {
     return obj[prop];
   });

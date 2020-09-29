@@ -65,3 +65,21 @@ main {
     }
   }
 }
+
+.pseudo-underline {
+  @apply relative;
+  &:after {
+    @apply absolute mx-auto block bg-white w-full;
+    content: "";
+    bottom: -4px;
+    height: 2px;
+    transform: scale(0, 1);
+    transition: transform 200ms ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      transform: scale(1, 1);
+    }
+  }
+}

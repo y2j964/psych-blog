@@ -2,19 +2,31 @@
   @apply flex flex-wrap bg-black px-4 py-6 overflow-hidden;
 
   &__item {
-    @apply text-white mt-3;
+    @apply text-white my-3 opacity-75;
+    transition: opacity 200ms ease-in-out;
 
     &:not(:last-child) {
       @apply mr-5;
     }
 
     @screen sm {
-      @apply mt-0;
+      @apply my-1;
+    }
+
+    &--is-active {
+      @apply font-medium opacity-100;
+    }
+
+    &:hover {
+      opacity: 1;
     }
   }
 
   &__collapsible-group {
     @apply block overflow-hidden w-full h-0 invisible;
+    /* neg margin so that the vertical spacing is consistent while allowing
+    margin for nav-items (which is in turn needed for the underline animation) */
+    margin-bottom: -0.75rem;
     transition: height 200ms ease-in-out, visibility 200ms ease-in-out;
 
     @screen sm {
@@ -25,7 +37,19 @@
       @apply visible;
       /* we know height will be 180px when there are 5 items here; if you change the items,
       or their spacing you should update hard-coded height */
-      height: 180px;
+      height: 192px;
+
+      @screen sm {
+        height: auto;
+      }
+    }
+
+    .navbar__item:first-child {
+      @apply mt-2;
+
+      @screen sm {
+        @apply mt-1;
+      }
     }
   }
 }
