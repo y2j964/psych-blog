@@ -22,13 +22,24 @@ markdownLibrary.renderer.rules.footnote_caption = (tokens, idx) => {
   return n;
 };
 
+const dateFormatter = new Intl.DateTimeFormat("en-us", {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+});
+
+const getDateDayMonthYear = (date) => {
+  const dateArr = date.replace(",", "").split(" ");
+  return `${dateArr[1]} ${dateArr[0]} ${dateArr[2]}`;
+};
+
 const PostPreview = createClass({
   render: function () {
     const { entry } = this.props;
     const thumbnail = entry.getIn(["data", "thumbnail"]);
     const imgSrc = thumbnail && this.props.getAsset(thumbnail);
     const thumbnailDescription = entry.getIn(["data", "thumbnailDescription"]);
-    const date = new Date(entry.getIn(["data", "date"]));
+    const date = entry.getIn(["data", "date"]);
     const title = entry.getIn(["data", "title"]);
     const author = entry.getIn(["data", "author"]);
     const body = entry.getIn(["data", "body"]);
@@ -44,7 +55,7 @@ const PostPreview = createClass({
         "div",
         { className: "post__meta" },
         h("span", {}, `${author} | `),
-        h("time", {}, date.toDateString())
+        h("time", {}, getDateDayMonthYear(dateFormatter.format(date)))
       ),
       h(
         "div",

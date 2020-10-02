@@ -1,8 +1,17 @@
 const htmlmin = require("html-minifier");
-const fs = require("fs");
-const path = require("path");
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
+
+const dateFormatter = new Intl.DateTimeFormat("en-us", {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+});
+
+const getDateDayMonthYear = (date) => {
+  const dateArr = date.replace(",", "").split(" ");
+  return `${dateArr[1]} ${dateArr[0]} ${dateArr[2]}`;
+};
 
 module.exports = function (eleventyConfig) {
   const markdownLibrary = markdownIt({
@@ -56,7 +65,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("toDateString", function (date) {
-    return date.toDateString();
+    return getDateDayMonthYear(dateFormatter.format(date));
   });
 
   eleventyConfig.addFilter("toISOString", function (date) {
