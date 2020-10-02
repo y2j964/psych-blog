@@ -52,5 +52,5 @@ collections:
           widget: "text",
           default: "The description of your post",
         }
-      - { label: "Tags", name: "tags", widget: "list", default: ["posts"] }
+      - { label: "Tags", name: "tags", widget: "list", default: ["posts, nba"] }
       - { label: "Body", name: "body", widget: "markdown" }
