@@ -28,7 +28,7 @@ const PostPreview = createClass({
     const thumbnail = entry.getIn(["data", "thumbnail"]);
     const imgSrc = thumbnail && this.props.getAsset(thumbnail);
     const thumbnailDescription = entry.getIn(["data", "thumbnailDescription"]);
-    const date = entry.getIn(["data", "date"]);
+    const date = new Date(entry.getIn(["data", "date"]));
     const title = entry.getIn(["data", "title"]);
     const author = entry.getIn(["data", "author"]);
     const body = entry.getIn(["data", "body"]);
@@ -44,7 +44,7 @@ const PostPreview = createClass({
         "div",
         { className: "post__meta" },
         h("span", {}, `${author} | `),
-        h("time", { datetime: date.toISOString() }, date.toDateString())
+        h("time", {}, date.toDateString())
       ),
       h(
         "div",
