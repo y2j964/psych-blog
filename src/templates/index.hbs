@@ -16,10 +16,10 @@ pagination:
 </ul>
 <div class="flex mb-12">
   {{#if pagination.href.previous}}
-  <span class='mr-auto'><a class='rounded px-4 md:px-5 py-3 md:py-4 text-sm sm:text-base bg-green-500 text-white' href="{{ pagination.href.previous }}">Newer Posts</a></span>
+  <span class='mr-auto'><a class='btn btn--accent' href="{{ pagination.href.previous }}">Newer Posts</a></span>
   {{/if}}
 
   {{#if pagination.href.next}}
-  <span class='ml-auto'><a class='rounded px-4 md:px-5 py-3 md:py-4 text-sm sm:text-base bg-green-500 text-white' href="{{ pagination.href.next }}">Older Posts</a></span>
+  <span class='ml-auto'><a class='btn btn--accent' href="{{ pagination.href.next }}">Older Posts</a></span>
   {{/if}}	
 </div>

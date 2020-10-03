@@ -1,15 +1,29 @@
 .btn {
-  @apply px-3 py-2 rounded;
+  @apply px-4 py-3 rounded text-sm;
 
-  &--inverse {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+  @screen sm {
+    @apply text-base;
+  }
+
+  @screen md {
+    @apply px-5 py-4;
+  }
+
+  &--accent {
+    @apply bg-green-500 text-white;
     transition: background-color 200ms ease, color 200ms ease;
 
     &:hover {
-      background-color: black;
-      color: white;
+      @apply bg-green-600;
+    }
+  }
+
+  &--inverse {
+    @apply bg-white text-green-500 border border-solid border-green-500;
+    transition: background-color 200ms ease, color 200ms ease;
+
+    &:hover {
+      @apply text-white bg-green-500;
     }
   }
 }
