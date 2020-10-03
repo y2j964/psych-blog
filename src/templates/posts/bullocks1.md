@@ -5,7 +5,7 @@ author: The Dude
 date: 2020-08-31 20:22:00
 thumbnail: https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80
 thumbnailDescription: Lean tree surrounded by verdant underbrush
-tags: bullocks
+tags: [posts, bullocks]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec porta tellus. Curabitur volutpat, dolor non posuere hendrerit, est velit porttitor libero, ut aliquam erat nulla sed ante. In hac habitasse platea dictumst. Duis tempus, nisl ut tincidunt scelerisque, elit massa vestibulum mauris, ac aliquam nibh quam ut eros. Donec ut nulla magna. Duis at orci lorem. Duis viverra nibh id nisi cursus, vel egestas eros rhoncus. Duis gravida augue sed nisi luctus, nec commodo orci vulputate. Mauris vel convallis  urna. Quisque vulputate varius erat sit amet tempus. Aliquam semper dui sem, euismod iaculis tellus fermentum sit amet.
