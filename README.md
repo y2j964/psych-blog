@@ -22,16 +22,21 @@ This is a fullstack static web site built with Eleventy.js and Handlebars. The d
 ## Technologies
 * Eleventy.js
 * Handlebars
+* Markdown
 * Netlify CMS
 * Webpack
-* NodeJS
-* Axios
 * Git and Git Bash
 * Tailwind CSS 1.0.4
 * PostCSS
 
 ## Features
-* Statically build site for SEO
+* Statically built site for SEO boost
+* Dynamic sitemap
+* Markdown footnote support
+* Footnote tooltips
+* Netlify CMS for authors
+* Hot module replacement for styles in dev environment
+* ES6 support via babel
 * Aria-supported
 
 ## Setup
@@ -53,13 +58,12 @@ Here are the development scripts:
 Runs webpack in dev mode.
 
 #### `npm run dev:webpack-server`
-Runs webpack server.
+Runs webpack server. Here, webpack is watching js and css files.
 
 #### `npm run dev:eleventy`
 Watches eleventy files (.hbs in this case) and builds on save.
 
 #### `npm run dev:server`
- "npm-run-all -p dev:webpack-server dev:eleventy",
 Sets up the webpack server and the eleventy watch in parallel.
 
 #### `npm run dev`
@@ -74,12 +78,11 @@ Runs webpack in production mode and builds assets.
 #### `npm run build:eleventy`
 Builds static resources.
 
-#### `npm run build:deploy`
-Deploys build directory to gh-pages
-
 #### `npm run build`
-Runs all production scripts in parallel. This is your main production script.
+Runs all production scripts in parallel. This is your main production script. You don't need to call this directly. When you deploy from Netlify CMS, this build script gets triggered.
 
 ## Acknowledgements
-* The Spinner gif was generated with [loading.io](https://loading.io/).
+* The footnote tooltip hover states were inspired by [Wikipedia](https://en.wikipedia.org/wiki/Main_Page).
+* The Markdown footnotes were supported by [markdown-it-footnote](https://github.com/markdown-it/markdown-it-footnote).
+* The application of markdown-it in the Netlify CMS custom preview was influenced by [this post by Guang Shi](https://www.guangshi.io/posts/customize-netlify-cms-preview/).
 * The favicon was generated with [favicon.io](https://favicon.io/).
