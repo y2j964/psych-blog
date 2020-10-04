@@ -72,6 +72,10 @@ module.exports = function (eleventyConfig) {
     return date.toISOString();
   });
 
+  eleventyConfig.addFilter("getCurrentYear", function () {
+    return new Date().getFullYear();
+  });
+
   eleventyConfig.addFilter("reverse", function (arr) {
     return arr.slice().reverse();
   });
