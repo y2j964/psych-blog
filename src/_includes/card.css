@@ -14,7 +14,7 @@
   }
 
   &__img {
-    @apply bg-gray-200 w-full h-full;
+    @apply bg-gray-200 w-full h-full object-cover;
   }
 
   &__body {

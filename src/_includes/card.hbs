@@ -1,12 +1,14 @@
-<li class='card'>
-  <div class='card__img-container'><img src={{data.thumbnail}} alt="{{ data.thumbnailDescription }}" class='card__img'>
+<li class='card' itemscope itemtype="http://schema.org/Article">
+  <div class='card__img-container'>
+    <img src={{data.thumbnail}} alt="{{ data.thumbnailDescription }}" class='card__img' itemprop="image">
   </div>
   <div class='card__body'>
-    <h3 class='card__title'>{{data.title}}</h3>
-    <p class='mb-2 leading-tight'>{{ data.description }} </p>
+    <h3 class='card__title' itemprop="name">{{data.title}}</h3>
+    <p class='mb-2 leading-tight' itemprop="description">{{ data.description }} </p>
     <a class='a-pseudo-wrap' href={{ url url }}></a>
-    <span class='card__small-print'>By {{ data.author }}</span>
-    <time class='card__small-print' datetime="{{toISOString data.date}}">{{ toDateString data.date }}
+    <span class='card__small-print' itemprop='author'>By {{ data.author }}</span>
+    <time class='card__small-print' datetime="{{toISOString data.date}}" itemprop="datePublished"
+      content="{{toISOString date}}">{{ toDateString data.date }}
     </time>
   </div>
 </li>

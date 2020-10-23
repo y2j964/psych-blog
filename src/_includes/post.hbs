@@ -2,17 +2,19 @@
 layout: base-layout.hbs
 ---
 
-<article class='post'>
-  <h2 class="post__title">{{ title }}</h2>
-  <p class='post__teaser'>{{ description }}</p>
+<article class='post' itemscope itemtype="http://schema.org/Article">
+  <h2 class="post__title" itemprop="name">{{ title }}</h2>
+  <p class='post__teaser' itemprop="description">{{ description }}</p>
   <div class="post__meta">
-    <span>{{ author }} | </span>
-    <time datetime="{{toISOString date}}">{{ toDateString date }}
+    <span itemprop='author'>{{ author }}</span>
+    |
+    <time datetime="{{toISOString date}}" itemprop="datePublished"
+      content="{{toISOString date}}">{{ toDateString date }}
   </div>
   <div class='post__img-container'>
-    <img src={{ thumbnail }} alt="{{ thumbnailDescription }}">
+    <img src={{ thumbnail }} alt="{{ thumbnailDescription }}" itemprop="image">
   </div>
-  <div class='post__body'>
+  <div class='post__body' itemprop="articleBody">
     {{{ content }}}
   </div>
   <div class="tooltip-container"></div>
